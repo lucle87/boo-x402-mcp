@@ -1,0 +1,53 @@
+{
+  "name": "boo-x402-mcp",
+  "version": "1.0.0",
+  "description": "MCP server giving AI agents pay-per-call access to Robinhood Chain (chain_id 4663) onchain data: wallet snapshots, token screener, rug check, trending tokens, burn stats. Paid in USDC on Base via x402. No API key, no signup. Built-in spend caps.",
+  "type": "module",
+  "bin": {
+    "boo-x402-mcp": "build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', 0o755)\"",
+    "prepublishOnly": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "usdc",
+    "base",
+    "robinhood-chain",
+    "crypto",
+    "web3",
+    "rug-check",
+    "ai-agents",
+    "pay-per-call"
+  ],
+  "author": "Boo (lucle87)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucle87/boo-x402-mcp.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "@x402/core": "^2.18.0",
+    "@x402/evm": "^2.18.0",
+    "@x402/fetch": "^2.18.0",
+    "viem": "^2.21.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
