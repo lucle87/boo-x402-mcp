@@ -1,0 +1,75 @@
+# boo-x402-mcp
+
+MCP server giving AI agents pay-per-call access to crypto/web3 ground-truth data across 5 chains: Ethereum, BNB Chain, Base, Solana, and Robinhood Chain (chain_id 4663).
+
+Paid in USDC on Base via x402. No API key, no signup, no subscription. Private key stays on the agent's machine (non-custodial). Built-in spend caps.
+
+Install: npx -y boo-x402-mcp
+npm: https://www.npmjs.com/package/boo-x402-mcp
+MCP Registry: io.github.lucle87/boo-x402-mcp
+
+## Free tools (no wallet needed)
+
+- x402_list_paid_tools: list every paid tool with its price. Call this first.
+- x402_spend_status: how much has been spent this session, and the caps.
+
+## Paid tools
+
+### Safety (call before buying a token)
+- token_rugcheck ($0.01) - GO/CAUTION/DANGER verdict. Chains: eth, bnb, base, solana, rhchain. Checks honeypot, buy/sell tax, mint authority, ownership, holder concentration.
+- token_holders ($0.01) - top holder %, top-10 %, holder count. Chains: eth, bnb, base, solana, rhchain.
+- contract_safety ($0.01) - proxy/upgradeable, owner privileges, unverified source. Chains: eth, bnb, base.
+- wallet_risk ($0.01) - scam/phishing flags, age, activity for an address.
+- wallet_sanctions ($0.01) - OFAC sanctions screen for an address.
+- wallet_signal ($0.02) - composite SAFE/CAUTION/DANGER verdict for an address.
+- solana_bundle_check ($0.015) - Solana only. Detects bundled/sniped token launches.
+
+### Meme tokens
+- meme_discover ($0.01) - trending / newly launched meme tokens. Chains: eth, bnb, base, solana.
+- token_momentum ($0.01) - short-term price/volume momentum.
+- meme_signal ($0.02) - composite BUY/HOLD/AVOID verdict.
+
+### Token data
+- token_price ($0.01) - price, liquidity, 24h volume, FDV, market cap from DEX pairs.
+- token_supply ($0.01) - total supply, circulating supply, decimals.
+- token_snapshot ($0.015) - price + supply + safety in one call.
+
+### Market and DeFi
+- fear_greed ($0.005) - Crypto Fear & Greed index. No input.
+- gas_oracle ($0.005) - gas prices (slow/average/fast) on an EVM chain.
+- ens_resolve ($0.005) - ENS name to address, or reverse.
+- defi_tvl ($0.01) - TVL for a DeFi protocol.
+- defi_yields ($0.01) - yield/farming opportunities.
+- chain_tvl ($0.01) - TVL per blockchain.
+- stablecoin_peg ($0.01) - stablecoin peg status, detects depegs.
+- derivatives_funding ($0.01) - perp funding rates and open interest.
+- trade_signal ($0.02) - composite trade signal for a major asset.
+
+### Prediction markets
+- prediction_markets ($0.008) - browse active markets.
+- prediction_search ($0.005) - search markets by keyword.
+- prediction_market ($0.008) - detail and implied forecast for one market.
+- prediction_history ($0.008) - historical price series for an outcome.
+
+### Robinhood Chain (new L2, not covered by other providers)
+- rhchain_health ($0.005) - network health: block, block time, gas, tx counts.
+- rhchain_wallet ($0.01) - wallet snapshot: balance, tx count, scam flags.
+- rhchain_wallet_score ($0.01) - activity score 0-100 and tier.
+- rhchain_token_screener ($0.008) - screen tokens incl. tokenized Stock Tokens.
+- rhchain_token_detail ($0.008) - holders, supply, price, market cap.
+- rhchain_tx ($0.005) - transaction lookup by hash.
+- rhchain_trending ($0.008) - trending tokens by 24h volume.
+- rhchain_burn ($0.005) - burned amount and % of supply.
+
+## Payment
+
+x402 on Base. USDC (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913).
+The wallet signs an EIP-3009 authorization locally per call. No ETH needed for gas.
+
+## Spend caps
+
+MAX_USD_PER_CALL (default 0.05) and MAX_USD_TOTAL (default 5) are enforced in code before the wallet signs.
+
+## Data
+
+Public, verifiable sources: Blockscout, RPC, DEX pairs, DefiLlama, GoPlus. Read-only. NOT investment advice.

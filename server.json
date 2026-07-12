@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.lucle87/boo-x402-mcp",
+  "description": "Pay-per-call crypto data for AI agents. USDC on Base via x402. No API key.",
+  "repository": { "url": "https://github.com/lucle87/boo-x402-mcp", "source": "github" },
+  "version": "1.0.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "boo-x402-mcp",
+      "version": "1.0.1",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        { "name": "WALLET_PRIVATE_KEY", "description": "Private key of a wallet holding USDC on Base. Stays on your machine.", "isRequired": true, "isSecret": true, "format": "string" },
+        { "name": "MAX_USD_PER_CALL", "description": "Max USD per single call (default 0.05).", "isRequired": false, "format": "string" },
+        { "name": "MAX_USD_TOTAL", "description": "Max USD per session (default 5).", "isRequired": false, "format": "string" }
+      ]
+    }
+  ]
+}

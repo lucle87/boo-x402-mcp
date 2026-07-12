@@ -1,0 +1,36 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required: []
+    properties:
+      walletPrivateKey:
+        type: string
+        description: >-
+          Private key of a wallet holding USDC on Base. Used to sign x402
+          payments locally. Never transmitted. Leave empty to use only the
+          free tools (x402_list_paid_tools, x402_spend_status).
+      maxUsdPerCall:
+        type: string
+        default: "0.05"
+        description: Maximum USD allowed for a single paid call.
+      maxUsdTotal:
+        type: string
+        default: "5"
+        description: Maximum USD allowed for the whole session.
+  commandFunction: |-
+    (config) => ({
+      command: 'node',
+      args: ['build/index.js'],
+      env: {
+        WALLET_PRIVATE_KEY: config.walletPrivateKey || '',
+        MAX_USD_PER_CALL: config.maxUsdPerCall || '0.05',
+        MAX_USD_TOTAL: config.maxUsdTotal || '5'
+      }
+    })
+  exampleConfig:
+    walletPrivateKey: "0x0000000000000000000000000000000000000000000000000000000000000001"
+    maxUsdPerCall: "0.05"
+    maxUsdTotal: "5"
