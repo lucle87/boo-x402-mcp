@@ -1,6 +1,6 @@
 {
   "name": "boo-x402-mcp",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "description": "MCP server giving AI agents pay-per-call access to Robinhood Chain (chain_id 4663) onchain data: wallet snapshots, token screener, rug check, trending tokens, burn stats. Paid in USDC on Base via x402. No API key, no signup. Built-in spend caps.",
   "type": "module",
   "bin": {
